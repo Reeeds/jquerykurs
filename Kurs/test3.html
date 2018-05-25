@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="src/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          
+
+          
+          $("#rechteck").click(function() {
+              console.log("animate");
+            $(this).animate({
+                width:"5cm",
+                height:"5cm",
+                opacity:0.1                               
+            },test2);
+            $("#rechteck").css("background-color","blue");  
+          });
+
+          $("#rechteck").dblclick(function() {
+              console.log("animate");
+            $(this).animate({
+                width:"1cm",
+                height:"1cm",
+                opacity:1           
+            });
+            $("#rechteck").css("background-color","red");  
+          });
+
+          function test() {
+              console.log("test");
+            /*  $(this).slideUp(2000); */
+              $(this).css("background-color","green");
+              $(this).animate({
+                width:"5cm",
+                height:"5cm",
+                opacity:0.1                               
+            },test2);
+          }
+
+         function test2() {
+            console.log("test2");
+            $(this).animate({
+                margin:"5cm",
+                opacity:1  
+            },test3);
+            $("#rechteck").css("background-color","yellow"); 
+          }
+
+         function test3() {
+            console.log("test3");
+            $(this).animate({
+                margin:"10cm",
+                opacity:1  
+            },test4);
+            $("#rechteck").css("background-color","black"); 
+          }
+
+         function test4() {
+            console.log("test4");
+            $(this).animate({
+                margin:"15cm",  
+                opacity:1  
+            },test);
+            $("#rechteck").css("background-color","violett"); 
+          }
+
+/*           $("#rechteck").mouseover(function() {
+              console.log("animate");
+            $(this).slideUp(20000);
+            $("#rechteck").css("background-color","green");  
+          }); */
+            
+        });
+    </script>
+</head>
+
+<body>
+    <div id="rechteck" style="width:1cm;    height: 1cm;  background-color:red;">
+    </div>
+</body>
+
+</html>

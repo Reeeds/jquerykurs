@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="src/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/bootstrap.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //var laender = [{"name": "Deutschland","code": "DE"	},{"name": "Schweiz","code": "CH"}];
+            var laender = "";
+            var airports = {"DE":["TXL","FRA","STR"],"CH":["BSL","GVA","ZRH"]};
+            var DE = ["TXL","FRA","STR"];
+            var CH = ["BSL","GVA","ZRH"];
+            
+            $("#land").click(function (){
+                $("#land").empty();
+
+                $.ajax({
+                type:"GET",
+                url:"countries.mock",
+              /*   contentType:'application/json;', */
+                dataType: "json",
+                success: function(result){
+                    console.log("success" + result);
+                    var laender = eval(result);
+                    console.log("länder: " + laender);
+
+                    $.each(laender,function(i, item){
+                        console.log("name: " + laender[i].name + " --code: " + laender[i].code);
+                        $("#land").append('<option value="'+ laender[i].code + '">' + laender[i].name + ' </option>');
+                    });
+                },
+                error: function() {
+                    alert('Fehler');
+                }
+            });
+
+            });
+
+            $("#flughafen").focus(function (){
+                $("#flughafen").empty();
+                var selLand = $("#land").val();
+                console.log(selLand);
+
+                $.each(airports[selLand],function(i, item){
+                    console.log("flughafen: " + airports[selLand][i] );
+                    $("#flughafen").append('<option>' + airports[selLand][i] + '</option>');
+                });
+            });
+
+            
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <label>Land</label>
+        <select id="land">
+            <option>None</option>
+        </select>
+
+            <br>
+        <label>Flughafen</label>
+        <select id="flughafen">
+            <option>None</option>
+        </select>
+    </div>
+</body>

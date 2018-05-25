@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="src/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="src/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          
+
+          
+          $("#rechteck").click(function() {
+           console.log("clip");
+            $(this).toggle("clip",turn);                                 
+ 
+          });
+
+          function turn() {
+            var e = $(this);
+            console.log("turn: " + e.data("color"));
+            if (e.data("color") == "red") {
+                console.log("if red true"      );
+                e.css("background-color","blue"); 
+                e.data("color","blue");
+                e.toggle("clip",turn);
+            } else if (e.data("color") == "blue") {
+                console.log("if blue true"      );
+                e.css("background-color","red"); 
+                e.data("color","red");
+                e.toggle("clip",turn);
+            }
+          //  e.toggle("clip",turn); 
+          }
+
+            function changeColor(){
+                var e = $(this);
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="rechteck" data-color="red" style="width:5cm;  height: 5cm;  background-color:red;">
+    </div>
+</body>
+
+</html>

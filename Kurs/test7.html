@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="src/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/bootstrap.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".del").click(function () {
+                $(this).closest("tr").remove();  
+            });     
+
+            $(".new").click(function () {
+
+                var newRow =`<tr id="row1" class="male">
+                                <td><input type="text" class="stretch"></input></td>
+                                <td><input type="text" class="stretch"></input></td>
+                                <td><input type="text" class="stretch"></input></td>
+                                <td><button type="text" class="del btn button">Löschen</button></td>
+                             </tr>`;
+                console.log(newRow);
+                $(".table").append(newRow);  
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Zeiterfassung</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tag</td>
+                    <th>Beschreibung</td>
+                    <th>Aufwand</td>
+                    <th></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="row1" class="male">
+                    <td><input type="text" class="stretch"></input></td>
+                    <td><input type="text" class="stretch"></input></td>
+                    <td><input type="text" class="stretch"></input></td>
+                    <td><button type="text" class="del btn button">Löschen</button></td>
+                </tr>
+                <tr id="row2" class="male">
+                    <td><input type="text" class="stretch"></input></td>
+                    <td><input type="text" class="stretch"></input></td>
+                    <td><input type="text" class="stretch"></input></td>
+                    <td><button type="text" class="del btn button">Löschen</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="text" class="new btn button">Neu</button>
+    </div>
+</body>
+
+</html>
