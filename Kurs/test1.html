@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="src/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="src/bootstrap.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var gender = "";
+
+            console.log(gender);
+            $("#buttonMale").click(function() {
+                gender = "male";
+                console.log(gender);
+                $("tr.male").css("background-color","red").show();
+                $("tr.female").hide();
+                $("#buttonChange").html('Change to female').removeAttr('disabled');
+            });
+
+            $("#buttonFemale").click(function() {
+                gender = "female";
+                console.log(gender);
+                $("tr.female").css("background-color","green").show();
+                $("tr.male").hide();
+                $("#buttonChange").html('Change to male').removeAttr('disabled');
+                
+            });
+
+            $("#buttonClear").click(function() {
+                gender = "none";
+                console.log(gender);
+                $("tr").css("background-color","white").show();
+                $("#buttonChange").attr("disabled", true).html('Change');
+
+            });
+
+            $("#buttonChange").click(function() {
+                console.log(gender);
+                if (gender == "female") {
+                    console.log("if-female");
+                    $("tr.male").css("background-color","red").show();
+                    $("tr.female").hide();
+                    $("#buttonChange").html('Change to '+ gender);
+                    gender = "male";
+                } else if (gender == "male") {
+                    console.log("if-male");
+                    $("tr.female").css("background-color","green").show();
+                    $("tr.male").hide();
+                    $("#buttonChange").html('Change to '+ gender);
+                    gender = "female";
+                } else {
+                    console.log("no gender selected yet");
+                    $("#buttonChange").attr("disabled", true);
+                }
+            });
+
+            
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Scientists</h1>
+        <table class="table">
+            <thead>
+                <tr >
+                    <th>Name</td>
+                    <th>Vorname</td>
+                    <th>Geburtstag</td>
+                    <th>Todestag</td>
+                    <th>Id</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="row1" class="male">
+                    <td>Fermi</td>
+                    <td>Enrico</td>
+                    <td>1901.09.29</td>
+                    <td>1954.11.28</td>
+                    <td>s-001</td>
+                </tr>
+                <tr id="row2" class="male">
+                    <td>Curie</td>
+                    <td>Pierre</td>
+                    <td>1859.05.15</td>
+                    <td>1906.04.19</td>
+                    <td>s-002</td>
+                </tr>
+                <tr id="row3" class="female">
+                    <td>Meitner</td>
+                    <td>Lise</td>
+                    <td>1878.11.07</td>
+                    <td>1968.10.27</td>
+                    <td>s-003</td>
+                </tr>
+                <tr id="row4"  class="female">
+                    <td>Curie</td>
+                    <td>Marie</td>
+                    <td>1867.11.07</td>
+                    <td>1934.07.04</td>
+                    <td>s-004</td>
+                </tr>
+                <tr id="row5" class="male">
+                    <td>Born</td>
+                    <td>Max</td>
+                    <td>1882.12.11</td>
+                    <td>1970.01.05</td>
+                    <td>s-005</td>
+                </tr>
+                <tr id="row6" class="male">
+                    <td>Hawking</td>
+                    <td>Stephen</td>
+                    <td>1942.01.08</td>
+                    <td>2018.03.14</td>
+                    <td>s-006</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="buttonFemale"   class="btn button">Female</button>
+        <button id="buttonMale"   class="btn button" >Male</button>
+        <button id="buttonChange" class="btn button" disabled>Change</button>
+        <button id="buttonClear"   class="btn button">Clear</button>
+    </div>
+</body>
+
+</html>
